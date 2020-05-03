@@ -1,0 +1,12 @@
+[master]
+
+gamgee ansible_host=gamgee.sbrk.org ansible_user=mxs
+
+[worker]
+
+bombadil ansible_host=bombadil.sbrk.org ansible_user=mxs
+treebeard ansible_host=treebeard.sbrk.org ansible_user=mxs
+
+[all:vars]
+
+ansible_python_interpreter=/usr/bin/python3
