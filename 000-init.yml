@@ -30,13 +30,14 @@
         state: present
 
     # Disable swap.
-    - name: disable swap for k8s
-      shell: swapoff -a
-    - name: remove swap from fstab
-      replace:
-        path: /etc/fstab
-        regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
-        replace: '# \1'
+    - name: remove swapfile from /etc/fstab
+      mount:
+        name: swap
+        fstype: swap
+        state: absent
+    - name: disable swap
+      command: swapoff -a
+      when: ansible_swaptotal_mb > 0
 
     # Docker.
     - name: enable docker
