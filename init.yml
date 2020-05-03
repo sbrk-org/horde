@@ -29,6 +29,22 @@
           - apt-transport-https
         state: present
 
+    # Disable swap.
+    - name: disable swap for k8s
+      shell: swapoff -a
+    - name: remove swap from fstab
+      replace:
+        path: /etc/fstab
+        regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+        replace: '# \1'
+
+    # Docker.
+    - name: enable docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
     # Kubernetes.
     - name: add k8s apt key
       apt_key:

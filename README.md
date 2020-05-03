@@ -2,10 +2,10 @@
 
 Ansible playbooks to manage **sbrk**.
 
-## Layout
+## Cluster
 
-- gamgee.sbrk.org [master worker]
+The following machines are available in the cluster:
+
+- gamgee.sbrk.org [master]
 - bombadil.sbrk.org [worker]
 - treebeard.sbrk.org [worker]
-
-
