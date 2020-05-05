@@ -1,0 +1,16 @@
+---
+
+### Common packages to install.
+
+- name: set up classic packages
+  apt:
+    name:
+      - htop
+      - weechat
+      - irssi
+      - tree
+      - emacs-nox
+      - tmux
+      - docker.io
+      - apt-transport-https
+      state: present
