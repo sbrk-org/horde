@@ -26,3 +26,8 @@
     dest: /etc/tinc/nets.boot
   notify:
     - restart tinc
+
+- name: add tinc config
+  template:
+    src: tinc.conf
+    dest: /etc/tinc/{{ netname }}/tinc.conf
