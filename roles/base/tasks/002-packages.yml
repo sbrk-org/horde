@@ -13,4 +13,4 @@
       - tmux
       - docker.io
       - apt-transport-https
-      state: present
+    state: present

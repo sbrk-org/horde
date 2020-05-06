@@ -1,0 +1,8 @@
+---
+
+# Setup all machines.
+
+- name: Setup all machines in the cluster
+  hosts: all
+  roles:
+    - base

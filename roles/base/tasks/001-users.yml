@@ -14,4 +14,4 @@
 - name: set up authorized keys for the 'mxs' user
   authorized_key: user=mxs key="{{item}}"
   with_file:
-    - files/mxs-key.pub
+    - files/user-mxs.pub
