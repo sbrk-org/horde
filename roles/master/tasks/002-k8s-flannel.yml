@@ -1,0 +1,13 @@
+---
+
+# Tasks to setup flannel.
+
+- name: copy flannel pod config
+  copy:
+    src: files/k8s-flannel.yml
+    dest: /etc/kubernetes/k8s-flannel.yml
+
+- name: set up flannel pod
+  k8s:
+    state: present
+    src: /etc/kubernetes/k8s-flannel.yml
