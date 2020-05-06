@@ -19,3 +19,10 @@
     path: /etc/tinc/{{ netname }}/hosts
     recurse: True
     state: directory
+
+- name: add network to autostart list
+  template:
+    src: nets.boot
+    dest: /etc/tinc/nets.boot
+  notify:
+    - restart tinc
