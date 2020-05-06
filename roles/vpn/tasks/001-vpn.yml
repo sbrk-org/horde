@@ -31,3 +31,14 @@
   template:
     src: tinc.conf
     dest: /etc/tinc/{{ netname }}/tinc.conf
+
+- name: add tinc up file
+  template:
+    src: tinc-up
+    dest: /etc/tinc/{{ netname }}/tinc-up
+
+- name: add tinc down file
+  template:
+    src: tinc-down
+    dest: /etc/tinc/{{ netname }}/tinc-down
+
