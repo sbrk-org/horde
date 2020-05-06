@@ -5,3 +5,7 @@
 users:
   - mxs
   - faltad
+
+# VPN settings
+
+netname: midearth

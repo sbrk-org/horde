@@ -13,3 +13,9 @@
     name: tinc
     enabled: yes
     state: started
+
+- name: create tinc network name directory
+  file:
+    path: /etc/tinc/{{ netname }}/hosts
+    recurse: True
+    state: directory
