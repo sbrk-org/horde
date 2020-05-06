@@ -1,6 +1,19 @@
 ---
 
-# Install Kubernetes.
+# Install Kubernetes & openshift client for ansible to work.
+
+- name: set up python package installer
+  apt:
+    name:
+      - python3-pip
+      - virtualenv
+    state: present
+
+- name: setup openshift client
+  pip:
+    name:
+      - PyYAML
+      - openshift
 
 - name: add k8s apt key
   apt_key:

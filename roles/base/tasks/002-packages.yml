@@ -11,6 +11,5 @@
       - tree
       - emacs-nox
       - tmux
-      - docker.io
       - apt-transport-https
     state: present
