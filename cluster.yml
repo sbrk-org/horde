@@ -1,6 +1,11 @@
+---
+
+- name: Setup kubernetes master node
+  hosts: master
+  roles:
+    - master
+
 - hosts: master
-  become: yes
-  gather_facts: false
   tasks:
     - name: get join command
       shell: kubeadm token create --print-join-command
@@ -10,10 +15,8 @@
         join_command: "{{ join_command_raw.stdout_lines[0] }}"
 
 - hosts: worker
-  become: yes
   tasks:
     - name: join cluster
-      shell: "{{ hostvars['gamgee']['join_command'] }} >> node_joined.txt"
+      shell: "{{ hostvars['gamgee']['join_command'] }}"
       args:
-        chdir: $HOME
-        creates: node_joined.txt
+        creates: /etc/kubernetes/kubelet.conf

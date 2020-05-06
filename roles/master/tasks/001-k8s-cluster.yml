@@ -8,8 +8,6 @@
     creates: /etc/kubernetes/admin.conf
 
 - name: create kube user directories
-  become: true
-  become_user: "{{ item }}"
   file:
     path: $HOME/.kube
     state: directory

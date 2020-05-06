@@ -1,6 +1,0 @@
----
-
-- name: Setup kubernetes master node
-  hosts: master
-  roles:
-    - master
