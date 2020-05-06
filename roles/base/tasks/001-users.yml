@@ -2,16 +2,17 @@
 
 # Tasks to setup Unix users.
 
-- name: create the 'mxs' user
-  user: name=mxs append=yes state=present createhome=yes shell=/bin/bash
+- name: create unix user
+  user: name="{{ item }}" append=yes state=present createhome=yes shell=/bin/bash groups=sudo
+  loop: "{{ users }}"
 
-- name: allow 'mxs' to have passwordless sudo
+- name: configure sudo
   lineinfile:
     dest: /etc/sudoers
-    line: 'mxs ALL=(ALL) NOPASSWD: ALL'
+    line: '{{ item }} ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'
+  loop: "{{ users }}"
 
-- name: set up authorized keys for the 'mxs' user
-  authorized_key: user=mxs key="{{item}}"
-  with_file:
-    - files/user-mxs.pub
+- name: set up authorized keys for the '{{ user }}' user
+  authorized_key: user=mxs key="{{ lookup('file', 'files/user-' + item + '.pub') }}"
+  loop: "{{ users }}"
