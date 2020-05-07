@@ -8,19 +8,18 @@
     creates: /etc/kubernetes/admin.conf
 
 - name: create kube user directories
+  become: true
+  become_user: "{{ item }}"
   file:
     path: $HOME/.kube
     state: directory
-    mode: 0755
-  with_flattened:
-    - "{{ users }}"
-    - ['root']
+  loop: "{{ users + ['root']  }}"
 
 - name: add kube config
+  become: true
+  become_user: "{{ item }}"
   copy:
     src: /etc/kubernetes/admin.conf
     dest: $HOME/.kube/config
     remote_src: yes
-  with_flattened:
-    - "{{ users }}"
-    - ['root']
+  loop: "{{ users + ['root']  }}"
