@@ -2,4 +2,3 @@
 
 - include_tasks: 001-k8s-cluster.yml
 - include_tasks: 002-k8s-flannel.yml
-
