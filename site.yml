@@ -4,7 +4,7 @@
   import_playbook: base.yml
 
 - name: set up intra-cluster cluster networking
-  import_playbook: cluster.yml
+  import_playbook: network.yml
 
 - name: set up kubernetes cluster
   import_playbook: cluster.yml
