@@ -3,7 +3,7 @@
 # Tasks to setup a master k8s cluster.
 
 - name: initialize the cluster
-  shell: kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{ physical_ip }}
+  shell: kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{ vpn_ip }}
   args:
     creates: /etc/kubernetes/admin.conf
 
