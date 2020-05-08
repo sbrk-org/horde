@@ -20,3 +20,9 @@
       shell: "{{ hostvars['gamgee']['join_command'] }}"
       args:
         creates: /etc/kubernetes/kubelet.conf
+
+- hosts: master
+  roles:
+    - nginx
+
+

@@ -1,0 +1,13 @@
+---
+
+# Tasks to setup nginx ingress controller.
+
+- name: copy nginx ingress config
+  copy:
+    src: files/k8s-ngninx-ingress-baremetal.yml
+    dest: /etc/kubernetes/k8s-ngninx-ingress-baremetal.yml
+
+- name: set up nginx ingress baremetal
+  k8s:
+    state: present
+    src: /etc/kubernetes/k8s-ngninx-ingress-baremetal.yml
